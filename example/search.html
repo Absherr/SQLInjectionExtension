@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <script src="jquery.js"></script>
+    <script src="sh_main.min.js"></script>
+    <script src="sh_sql.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="sh_style.css">
+</head>
+<body onload="sh_highlightDocument();">
+
+<pre class="sh_sql"></pre>
+
+    <script>
+        url = String(window.location);//.replace(/%20/g," ").replace(/%22/g,"\"");
+        url=decodeURIComponent(url);
+        url = url.split("&");
+        url[0] = url[0].split("?")[1];
+        for(i =0;i<url.length;i++){
+            t = url[i].split("=")
+            eval(t[0]+"='"+escape(t[1])+"'");
+        }
+        //query = +name+"' AND surname='"+surname+"' AND age='"+age+"';";
+        
+        $("pre").append("SELECT * FROM users WHERE name='");
+        $("pre").append(decodeURIComponent(name));
+        $("pre").append("' AND surname='");
+        $("pre").append(decodeURIComponent(surname));
+        $("pre").append("' AND age='");
+        $("pre").append(decodeURIComponent(age));
+        $("pre").append("\';");
+    </script>
+</body>
+</html>

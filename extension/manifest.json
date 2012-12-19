@@ -1,0 +1,24 @@
+{
+  "name": "A browser action with no icon that makes the page red",
+  "version": "1.0",
+   "content_scripts": [
+    {
+      "matches": ["file:///*/*"],
+      "js": ["page.js"]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "browser_action": {
+    "name": "Make this page red",
+    "icons": ["icon.png"],
+	"default_popup": "popup.html"
+  },
+  "background":{
+		"page": "popup.html"
+  },
+  "manifest_version": 2,
+  
+  "web_accessible_resources": ["jquery.js","code.js"]
+}
